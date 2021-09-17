@@ -5,7 +5,7 @@ interest.py
 Problem: find monthly interest charge
 
 Certification of Authenticity
-I certify that this assignment is entirely my own work.
+I certify that this assignment is entirely my own work
 """
 
 def interest():
