@@ -1,10 +1,49 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: Miles Eriksen
+lab4.py
+
+Problem: Graphics
+
+Certification of Authenticity
+I certify that this assignment is entirely my own work.
 """
 
 from graphics import *
 
+
+
+def rectangle():
+    """
+    This program displays information about a rectangle drawn by the user.
+    Input: Two mouse clicks for the opposite corners of a rectangle.
+    Output: Draw the rectangle.
+         Print the perimeter and area of the rectangle.
+    Formulas: area = (length)(width)   and    perimeter = 2(length+width)
+    """
+    win = GraphWin("Draw a Rectangle")
+    win.setCoords(0.0,0.0,10.0,10.0)
+
+
+    p1 = win.getMouse()
+    p1.draw(win)
+    p2 = win.getMouse()
+    p2.draw(win)
+
+    shape = Rectangle(p1,p2)
+    shape.setFill("Blue")
+    shape.setOutline("Blue")
+    shape.draw(win)
+    message = Text(Point(2.5, 0.5), "Perimeter & Area: ")
+    message.draw(win)
+    x = p1.getX()
+    y = p2.getY()
+    message2 = Text(Point(5.5, 0.5), round((y-x)*2 + (x-y)*2,2))
+    message2.draw(win)
+    message3 = Text(Point(7.0, 0.5),round((y-x * x-y),2))
+    message3.draw(win)
+    win.getMouse()
+
+    pass
 
 def squares():
     """  <---  You can use tripled quotes to write a multi-line comment....
@@ -34,40 +73,35 @@ def squares():
     instructions.draw(win)
 
     # builds a circle
-    shape = Circle(Point(50, 50), 20)
+    shape = Rectangle(Point(50, 50), Point(20,20))
     shape.setOutline("red")
     shape.setFill("red")
     shape.draw(win)
 
     # allows the user to click multiple times to move the circle
     for i in range(num_clicks):
-        p = win.getMouse()
-        c = shape.getCenter()  # center of circle
+        p1 = win.getMouse()
+        c1 = shape.getCenter()  # center of circle
 
         # move amount is distance from center of circle to the
         # point where the user clicked
-        dx = p.getX() - c.getX()
-        dy = p.getY() - c.getY()
-        shape.move(dx, dy)
+        dx = p1.getX() - c1.getX()
+        dy = p1.getY() - c1.getY()
+        shape_clone = shape.clone()
+        shape_clone.move(dx,dy)
+        shape_clone.draw(win)
+    instructions.undraw()
+    instructions = Text(inst_pt, "Click again to quit")
+    instructions.draw(win)
+
+
 
     win.getMouse()
     win.close()
 
-
-def rectangle():
-    """
-    This program displays information about a rectangle drawn by the user.
-    Input: Two mouse clicks for the opposite corners of a rectangle.
-    Output: Draw the rectangle.
-         Print the perimeter and area of the rectangle.
-    Formulas: area = (length)(width)   and    perimeter = 2(length+width)
-    """
-    pass
-
-
 def main():
     squares()
-    # rectangle()
+    rectangle()
     # circle()
     # pi2()
 
