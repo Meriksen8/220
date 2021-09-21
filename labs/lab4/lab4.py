@@ -11,7 +11,6 @@ I certify that this assignment is entirely my own work.
 from graphics import *
 
 
-
 def rectangle():
     """
     This program displays information about a rectangle drawn by the user.
